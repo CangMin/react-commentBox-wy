@@ -1,0 +1,22 @@
+{
+  "name": "comment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev":"browser-sync start --server --files *.*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CangMin/react-commentBox-wy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CangMin/react-commentBox-wy/issues"
+  },
+  "homepage": "https://github.com/CangMin/react-commentBox-wy#readme",
+  "dependencies": {
+    "browser-sync": "^2.17.5"
+  }
+}
