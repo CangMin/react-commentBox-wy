@@ -56,7 +56,7 @@ class CommentBox extends React.Component{
 	loadDataFromServer(){
 		console.log("开始加载数据");
 		$.ajax({
-			url:"./comments.json",
+			url:this.props.url,
 			dataType:"json",
 			success:function(comments){
 				// console.log(this);
@@ -89,7 +89,7 @@ class CommentBox extends React.Component{
 }
 
 ReactDOM.render(
-        <CommentBox/>,
+        <CommentBox url="comments.json"/>,
         document.getElementById('content')
       );
 
