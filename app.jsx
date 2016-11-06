@@ -15,6 +15,19 @@ class Comment extends React.Component{
 
 //提交评论表单组件 
 class CommentForm extends React.Component{
+
+	//表单提交函数方法
+	handleSubmit(e){
+		e.preventDefault();//阻止浏览器原生刷新
+		// console.log(this,e);
+		//const定义常量es6语法
+		const author = this.refs.author.value.trim();//获取表单中ref属性值为author的输入值
+		const body = this.refs.body.value.trim();
+		const form = this.refs.form;//获取表单中ref属性值为form的对象，用于重置表单
+		// console.log(author,body);
+		form.reset();
+	}
+
 	render(){
 	//handleSubmit绑定表单提交函数
 	//ref可获取真实的Dom对象
