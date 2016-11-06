@@ -21,23 +21,28 @@ class CommentForm extends React.Component{
 	}
 }
 
+
 class CommentList extends React.Component{
 	render(){
+		console.log(this.props.comments);
+		var commentsNode = this.props.comments.map(function(comment,index){
+			return <Comment key={'comment-'+index} author={comment.author} time={comment.time}>
+						{comment.body}
+				   </Comment>
+		});
 		return (
 			<div className="comment-list">
-				<Comment author="小李" time="2016-11-06">
-					沙发
-				</Comment>
-				<Comment author="小张" time="2016-11-05">
-					这是第2条评论
-				</Comment>
-				<Comment author="小林" time="2016-11-04">
-					这是第3条评论
-				</Comment>
+				{commentsNode}
 			</div>
 		)
 	}
 }
+
+var comments = [
+	{author:"小李",body:"这是一条评论",time:"20161106"},
+	{author:"小玲",body:"这是第二条评论",time:"20161105"},
+	{author:"小张",body:"这是第三条评论",time:"20161104"}
+];
 
 class CommentBox extends React.Component{
 
@@ -45,7 +50,7 @@ class CommentBox extends React.Component{
 		return (
 			<div className="comment-box">
 				<h1>Comments</h1>	
-				<CommentList/>
+				<CommentList comments={comments}/>
 				<CommentForm/>
 			</div>
 			)
