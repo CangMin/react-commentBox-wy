@@ -108,7 +108,9 @@ class CommentBox extends React.Component{
 		const newComments = comments.concat([comment]);//将表单提交后的新评论数据以数组的形式拼接添加到旧评论数据中，返回一个包括表单提交前和提交后的完整数据
 		this.setState({comments:newComments});//将评论完整数据更新到CommentBox组件comments状态，既让CommentBox组件显示表单提交后的完整评论
 
-		$.ajax({
+		//模拟网络拥堵提交数据失败过程
+		setTimeout(()=>{
+			$.ajax({
 			url:this.props.url,//CommentBox组件url属性获取的地址，既数据提交的服务器地址
 			dataType:"json",
 			type:"POST",
@@ -121,6 +123,8 @@ class CommentBox extends React.Component{
 				this.setState({comments:comments});//表单提交评论数据至服务器失败，状态返回未新增评论前的旧数据
 			}
 		});
+		},2000);
+		
 	}
 	render(){
 		return (
