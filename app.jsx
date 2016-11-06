@@ -13,10 +13,17 @@ class Comment extends React.Component{
 	}
 }
 
+//提交评论表单组件 
 class CommentForm extends React.Component{
 	render(){
+	//handleSubmit绑定表单提交函数
+	//ref可获取真实的Dom对象
 		return (
-				<div className="comment-form">CommentForm</div>
+				<form className="comment-form" ref="form" onSubmit={ e =>{this.handleSubmit(e)}} >
+				<input type="text" placeholder="你的姓名" ref="author" />
+				<input type="text" placeholder="输入您的评论" ref="body" />
+				<input type="submit" value="提交评论" />
+				</form>
 			)
 	}
 }
