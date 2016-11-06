@@ -102,13 +102,19 @@ class CommentBox extends React.Component{
 
 	handleNewComment(comment){
 		// console.log("CommentBox组件获取CommentForm组件传递来的表单值对象"+comment);//comment值就是CommentForm组件中表单获取用户输入的author,body对象值
+
+		//表单提交的数据在未提交至服务器前先完成数据添加渲染显示
+		const comments = this.state.comments;//表单未提交前的评论，既旧评论
+		const newComments = comments.concat([comment]);//将表单提交后的新评论数据以数组的形式拼接添加到旧评论数据中，返回一个包括表单提交前和提交后的完整数据
+		this.setState({comments:newComments});//将评论完整数据更新到CommentBox组件comments状态，既让CommentBox组件显示表单提交后的完整评论
+		
 		$.ajax({
 			url:this.props.url,//CommentBox组件url属性获取的地址，既数据提交的服务器地址
 			dataType:"json",
 			type:"POST",
 			data:comment,
 			success:comments => {
-				this.setState({comments:comments});
+				this.setState({comments:comments});//向服务器提交表单数据成功后，将服务器返回的数据更新至CommentBox组件状态
 			},
 			error:(xhr,status,err) => {
 				console.log(err.toString());
