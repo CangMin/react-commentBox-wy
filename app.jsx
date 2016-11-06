@@ -58,13 +58,13 @@ class CommentBox extends React.Component{
 		$.ajax({
 			url:this.props.url,
 			dataType:"json",
-			success:function(comments){
+			success: comments => {//es6匿名的箭头函数写法能自动绑定react上文this对象,如果函数只有一个参数，可省略圆括号
 				// console.log(this);
 				console.log("服务端获取的数据"+comments);
 				this.setState({comments:comments});
-			}.bind(this),//让success回调函数中的this指向react对象
-			error: function (xhr) {
-                        console.log('动态页有问题！\n\n' + xhr.responseText);
+			},
+			error: (xhr,status,err) => {//如果函数不止一个参数，不能省略圆括号
+                        console.log('动态页有问题！\n\n' + xhr.responseText+err.toString());
                     }
 		});
 			console.log("数据加载完成");
