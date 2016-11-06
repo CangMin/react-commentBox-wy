@@ -25,6 +25,9 @@ class CommentForm extends React.Component{
 		const body = this.refs.body.value.trim();
 		const form = this.refs.form;//获取表单中ref属性值为form的对象，用于重置表单
 		// console.log(author,body);
+
+		//封装表单输入值为一个对象赋给Commentform组件的onSubmit属性props传递到CommentBox组件
+		this.props.onSubmit({author:author,body:body});
 		form.reset();
 	}
 
@@ -97,12 +100,16 @@ class CommentBox extends React.Component{
 
 	}
 
+	handleNewComment(comment){
+		// console.log("CommentBox组件获取CommentForm组件传递来的表单值对象"+comment);//comment值就是CommentForm组件中表单获取用户输入的author,body对象值
+		
+	}
 	render(){
 		return (
 			<div className="comment-box">
 				<h1>Comments</h1>	
 				<CommentList comments={this.state.comments}/>
-				<CommentForm/>
+				<CommentForm onSubmit={comment => this.handleNewComment(comment)}/>
 			</div>
 			)
 	}
