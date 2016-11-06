@@ -46,11 +46,18 @@ var comments = [
 
 class CommentBox extends React.Component{
 
+	constructor(props){
+		super();
+		this.state = {
+			comments:props.comments//通过props将值传递给state,实现响应式编程。每当state值发生改变时，都会调用render()重新渲染Dom有变化的区域。
+		};
+	}
+
 	render(){
 		return (
 			<div className="comment-box">
 				<h1>Comments</h1>	
-				<CommentList comments={comments}/>
+				<CommentList comments={this.state.comments}/>
 				<CommentForm/>
 			</div>
 			)
@@ -58,7 +65,7 @@ class CommentBox extends React.Component{
 }
 
 ReactDOM.render(
-        <CommentBox/>,
+        <CommentBox comments={comments}/>,
         document.getElementById('content')
       );
 
