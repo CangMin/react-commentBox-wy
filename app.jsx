@@ -102,7 +102,18 @@ class CommentBox extends React.Component{
 
 	handleNewComment(comment){
 		// console.log("CommentBox组件获取CommentForm组件传递来的表单值对象"+comment);//comment值就是CommentForm组件中表单获取用户输入的author,body对象值
-		
+		$.ajax({
+			url:this.props.url,//CommentBox组件url属性获取的地址，既数据提交的服务器地址
+			dataType:"json",
+			type:"POST",
+			data:comment,
+			success:comments => {
+				this.setState({comments:comments});
+			},
+			error:(xhr,status,err) => {
+				console.log(err.toString());
+			}
+		});
 	}
 	render(){
 		return (
