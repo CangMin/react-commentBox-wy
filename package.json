@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"browser-sync start --server --files *.*"
+    "dev": "browser-sync start --server --files *.*"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "homepage": "https://github.com/CangMin/react-commentBox-wy#readme",
   "dependencies": {
     "browser-sync": "^2.17.5"
+  },
+  "devDependencies": {
+    "react": "^15.3.2"
   }
 }

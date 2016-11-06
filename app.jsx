@@ -1,11 +1,15 @@
-class HelloWorld extends React.Component ｛
+
+class Count extends React.Component{
 	render(){
 		return (
 			<h1>hello world</h1>
 			);
 	}
-｝
+}
 
-React.render(
-<HelloWorld/>,document.getElementById("content")
-);
+ReactDOM.render(
+        <Count/>,
+        document.getElementById('content')
+      );
+
+
